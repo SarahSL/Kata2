@@ -1,28 +1,24 @@
 package kata2;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
+
+        
 public class Histogram<T> {
-   private final T[] vector;
+    private final Map<T,Integer> map = new HashMap<>();
 
-    public Histogram(T[] vector) {
-        this.vector = vector;
+    public Integer get(Object key) {
+        return map.get(key);
     }
 
-    public T[] getVector() {
-        return vector;
+    public Set<T> keySet() {
+        return map.keySet();
     }
-   
-    public HashMap<T,Integer> getHistogram(){
-        HashMap<T,Integer> histogram=new HashMap<>();
-        for (T key : vector) {
-            if(!histogram.containsKey(key)){
-                histogram.put(key,0);
-            }
-            histogram.put(key, histogram.get(key)+1);
-        }
-        return histogram;
+    public void increment (T key){
+        map.put(key,map.containsKey(key)? map.get(key)+1:1);
     }
-   
-   }
+ }
+
 
